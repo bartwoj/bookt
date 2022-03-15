@@ -9,7 +9,16 @@ data class BookUser (
     val id: String,
     val name: String,
     val surname: String,
-    val borrowedBooks: List<String>,
-    val pastBorrowedBooks: List<String>
+    val borrowedBooks: MutableList<String> = arrayListOf(),
+    val pastBorrowedBooks: MutableList<String> = arrayListOf()
 
-    )
+    ) {
+    public fun borrowBook(bookId: String) {
+        borrowedBooks.add(bookId)
+    }
+
+    public fun returnBook(bookId: String) {
+        borrowedBooks.remove(bookId)
+        pastBorrowedBooks.add(bookId)
+    }
+}
