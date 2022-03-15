@@ -25,4 +25,14 @@ class BookController(
     public fun getBooks(): Flux<Book> {
         return bookService.getBooks()
     }
+
+    @GetMapping("/book/bookUser/{bookUserId}")
+    public fun getBorrowedBooksForBookUser(@PathVariable("bookUserId") bookUserId: String): Flux<Book> {
+        return bookService.getBorrowedBooksForBookUser(bookUserId)
+    }
+
+    @GetMapping("/book/bookUser/past/{bookUserId}")
+    public fun getPastBorrowedBooksForBookUser(@PathVariable("bookUserId") bookUserId: String): Flux<Book> {
+        return bookService.getPastBorrowedBooksForBookUser(bookUserId)
+    }
 }

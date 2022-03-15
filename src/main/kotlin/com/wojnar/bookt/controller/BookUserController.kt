@@ -30,4 +30,14 @@ class BookUserController (
     public fun borrowBookForBookUser(@PathVariable("bookUserId") bookUserId: String, @PathVariable("bookId") bookId: String): Mono<BookUser> {
         return bookUserService.borrowBookForBookUser(bookUserId, bookId)
     }
+
+    @PatchMapping("/bookUser/{bookUserId}/return/{bookId}")
+    public fun returnBookForBookUser(@PathVariable("bookUserId") bookUserId: String, @PathVariable("bookId") bookId: String): Mono<BookUser> {
+        return bookUserService.returnBookForBookUser(bookUserId, bookId)
+    }
+
+    @GetMapping("/bookUser/book/{bookId}")
+    public fun getBookUsersForBorrowedBook(@PathVariable("bookId") bookId: String): Flux<BookUser> {
+        return bookUserService.getBookUsersForBorrowedBook(bookId)
+    }
 }

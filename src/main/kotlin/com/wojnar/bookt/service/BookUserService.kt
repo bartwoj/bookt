@@ -10,4 +10,6 @@ interface BookUserService {
     fun addBookUser(bookUser: BookUser): Mono<BookUser>
     fun borrowBookForBookUser(bookUserId: String, bookId: String): Mono<BookUser>
 
+    fun returnBookForBookUser(bookUserId: String, bookId: String): Mono<BookUser>
+    fun getBookUsersForBorrowedBook(bookId: String): Flux<BookUser>
 }
